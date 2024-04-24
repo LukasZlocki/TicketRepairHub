@@ -1,0 +1,12 @@
+.vscode/
+.vs/
+
+TicketRepairHub.Application/obj
+TicketRepairHub.Application/bin
+TicketRepairHub.Domain/obj
+TicketRepairHub.Domain/bin
+TicketRepairHub.Infrastructure/obj
+TicketRepairHub.Infrastructure/bin
+TicketRepairHub.Blazor.WebUI/obj
+TicketRepairHub.Blazor.WebUI/bin
+
