@@ -5,11 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using TicketRepairHub.Blazor.WebUI.Components;
 using TicketRepairHub.Blazor.WebUI.Components.Account;
 using TicketRepairHub.Blazor.WebUI.Data;
+using TicketRepairHub.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
