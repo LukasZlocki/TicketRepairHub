@@ -1,4 +1,6 @@
-﻿namespace TicketRepairHub.Domain.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TicketRepairHub.Domain.Models
 {
     public class Ticket
     {
@@ -7,8 +9,12 @@
         public string? UserName { get; set; }
         public DateTime CreatedAtDate { get; set; }
         public DateTime ClosedAtDate { get; set; }
-        public TestResult? Result { get; set; } // Foreign key reference
-        public TestLimit? Limits { get; set; } // Foreign key reference
+        public int TestResultId { get; set; }
+        [ForeignKey("TestResultId")]
+        public TestResult? Result { get; set; }
+        public int TestLimitId { get; set; }
+        [ForeignKey("TestLimitId")]
+        public TestLimit? Limits { get; set; } 
         public string? FailedOnTest { get; set; }
         public string? FailedOnPart { get; set; }
         public string? FailedOnPartDescription { get; set; }
