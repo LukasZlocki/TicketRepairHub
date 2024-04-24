@@ -10,7 +10,7 @@ namespace TicketRepairHub.Infrastructure.Extensions
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<RepairTicketDbContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("ShopConnectionString")));
+                configuration.GetConnectionString("RepairingTicketConnectionString")));
         }
     }
 }
