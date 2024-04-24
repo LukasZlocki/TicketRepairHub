@@ -9,7 +9,7 @@ namespace TicketRepairHub.Domain.Models
     public class FailureTreePart
     {
         public int Id { get; set; }
-        public string Part { get; set; }
+        public string? Part { get; set; }
         public int TestId { get; set; }
     }
 }

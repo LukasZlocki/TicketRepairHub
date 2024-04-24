@@ -5,11 +5,15 @@ using Microsoft.EntityFrameworkCore;
 using TicketRepairHub.Blazor.WebUI.Components;
 using TicketRepairHub.Blazor.WebUI.Components.Account;
 using TicketRepairHub.Blazor.WebUI.Data;
+using TicketRepairHub.Infrastructure.Extensions;
+using TicketRepairHub.Infrastructure.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+//builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
@@ -24,15 +28,16 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+var connectionString = builder.Configuration.GetConnectionString("RepairingTicketConnectionString") ?? throw new InvalidOperationException("Connection string 'RepairingTicketConnectionString' not found.");
+builder.Services.AddDbContext<RepairTicketDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddEntityFrameworkStores<RepairTicketDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
+
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
