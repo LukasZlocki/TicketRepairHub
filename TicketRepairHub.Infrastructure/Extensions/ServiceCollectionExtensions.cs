@@ -5,15 +5,12 @@ using TicketRepairHub.Infrastructure.Persistance;
 
 namespace TicketRepairHub.Infrastructure.Extensions
 {
-    public class ServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
-        public static class ServiceCollectionExtension
+        public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-            {
-                services.AddDbContext<RepairTicketDbContext>(options => options.UseSqlServer(
-                    configuration.GetConnectionString("ShopConnectionString")));
-            }
+            services.AddDbContext<RepairTicketDbContext>(options => options.UseSqlServer(
+                configuration.GetConnectionString("ShopConnectionString")));
         }
     }
 }
