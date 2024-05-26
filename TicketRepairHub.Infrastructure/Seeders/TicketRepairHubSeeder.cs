@@ -2,11 +2,11 @@
 
 namespace TicketRepairHub.Infrastructure.Seeders
 {
-    public class FailureTreeSeeder
+    public class TicketRepairHubSeeder
     {
         private readonly RepairTicketDbContext _dbcontext;
 
-        public FailureTreeSeeder(RepairTicketDbContext dbContext)
+        public TicketRepairHubSeeder(RepairTicketDbContext dbContext)
         {
             _dbcontext = dbContext;
         }

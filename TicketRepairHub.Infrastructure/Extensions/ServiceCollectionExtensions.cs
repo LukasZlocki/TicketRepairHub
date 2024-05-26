@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TicketRepairHub.Infrastructure.Persistance;
+using TicketRepairHub.Infrastructure.Seeders;
 
 namespace TicketRepairHub.Infrastructure.Extensions
 {
@@ -11,6 +12,8 @@ namespace TicketRepairHub.Infrastructure.Extensions
         {
             services.AddDbContext<RepairTicketDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("RepairingTicketConnectionString")));
+
+            services.AddScoped<TicketRepairHubSeeder> seeder
         }
     }
 }
