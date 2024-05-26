@@ -3,12 +3,12 @@
     public class TestResult
     {
         public int Id { get; set; }
-        public string? Part { get; set; }
+        public string? Product { get; set; }
         public string? Serial { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime StopTime { get; set; }
         public string? Operator { get; set; }
-        public bool TotalResult1 { get; set; }
+        public bool IsTotalResultOK { get; set; }
         public double TestResult1 { get; set; }
         public bool IsTestResult1OK { get; set; }
         public double TestResult2 { get; set; }
