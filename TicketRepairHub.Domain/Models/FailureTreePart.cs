@@ -10,6 +10,6 @@ namespace TicketRepairHub.Domain.Models
     {
         public int Id { get; set; }
         public string? Part { get; set; }
-        public int TestId { get; set; }
+        public FailureTreeTest Test { get; set; }
     }
 }
