@@ -26,8 +26,7 @@ namespace TicketRepairHub.Infrastructure.Seeders
                         );
                     await _dbcontext.SaveChangesAsync();
                 }
-
-                
+          
                 if (!_dbcontext.FailureTreeParts.Any())
                 {
                     _dbcontext.FailureTreeParts.AddRange(
