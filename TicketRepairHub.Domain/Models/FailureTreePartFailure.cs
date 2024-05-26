@@ -4,7 +4,9 @@
     {
         public int Id { get; set; }
         public string? PartFailureDecscription { get; set; }
-        public int PartId { get; set; }
+        
+        public int FailureTreePartId { get; set; }
+        public FailureTreePart? Part { get; set; }
     }
 
 }
