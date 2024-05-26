@@ -8,5 +8,4 @@
         public int FailureTreePartId { get; set; }
         public FailureTreePart? Part { get; set; }
     }
-
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace TicketRepairHub.Domain.Models
+﻿namespace TicketRepairHub.Domain.Models
 {
     public class Ticket
     {

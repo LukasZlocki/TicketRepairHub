@@ -12,7 +12,7 @@ using TicketRepairHub.Infrastructure.Persistance;
 namespace TicketRepairHub.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTicketDbContext))]
-    [Migration("20240526142419_Init")]
+    [Migration("20240526160629_Init")]
     partial class Init
     {
         /// <inheritdoc />
