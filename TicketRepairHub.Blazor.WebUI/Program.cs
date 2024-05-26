@@ -7,6 +7,7 @@ using TicketRepairHub.Blazor.WebUI.Components.Account;
 using TicketRepairHub.Blazor.WebUI.Data;
 using TicketRepairHub.Infrastructure.Extensions;
 using TicketRepairHub.Infrastructure.Persistance;
+using TicketRepairHub.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,11 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
 var app = builder.Build();
+
+// Add seeding service
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<TicketRepairHubSeeder>();
+await seeder.Seed();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -30,20 +30,20 @@ namespace TicketRepairHub.Infrastructure.Seeders
                 if (!_dbcontext.FailureTreeParts.Any())
                 {
                     _dbcontext.FailureTreeParts.AddRange(
-                        new Domain.Models.FailureTreePart() { Part = "Valve", FailureTreeTestId = 0 },
                         new Domain.Models.FailureTreePart() { Part = "Valve", FailureTreeTestId = 1 },
-                        new Domain.Models.FailureTreePart() { Part = "Housing", FailureTreeTestId = 0 },
-                        new Domain.Models.FailureTreePart() { Part = "Housing", FailureTreeTestId = 2 },
-                        new Domain.Models.FailureTreePart() { Part = "Spool", FailureTreeTestId = 2 },
+                        new Domain.Models.FailureTreePart() { Part = "Valve", FailureTreeTestId = 2 },
+                        new Domain.Models.FailureTreePart() { Part = "Housing", FailureTreeTestId = 1 },
+                        new Domain.Models.FailureTreePart() { Part = "Housing", FailureTreeTestId = 3 },
                         new Domain.Models.FailureTreePart() { Part = "Spool", FailureTreeTestId = 3 },
-                        new Domain.Models.FailureTreePart() { Part = "Pin", FailureTreeTestId = 0 },
-                        new Domain.Models.FailureTreePart() { Part = "Pin", FailureTreeTestId = 4 },
-                        new Domain.Models.FailureTreePart() { Part = "O-Ring", FailureTreeTestId = 0 },
-                        new Domain.Models.FailureTreePart() { Part = "O-Ring", FailureTreeTestId = 2 },
-                        new Domain.Models.FailureTreePart() { Part = "Bolt", FailureTreeTestId = 0 },
-                        new Domain.Models.FailureTreePart() { Part = "Bolt", FailureTreeTestId = 3 },
-                        new Domain.Models.FailureTreePart() { Part = "GearSet", FailureTreeTestId = 1 },
-                        new Domain.Models.FailureTreePart() { Part = "GearSet", FailureTreeTestId = 2 }
+                        new Domain.Models.FailureTreePart() { Part = "Spool", FailureTreeTestId = 4 },
+                        new Domain.Models.FailureTreePart() { Part = "Pin", FailureTreeTestId = 1 },
+                        new Domain.Models.FailureTreePart() { Part = "Pin", FailureTreeTestId = 5 },
+                        new Domain.Models.FailureTreePart() { Part = "O-Ring", FailureTreeTestId = 1 },
+                        new Domain.Models.FailureTreePart() { Part = "O-Ring", FailureTreeTestId = 3 },
+                        new Domain.Models.FailureTreePart() { Part = "Bolt", FailureTreeTestId = 1 },
+                        new Domain.Models.FailureTreePart() { Part = "Bolt", FailureTreeTestId = 4 },
+                        new Domain.Models.FailureTreePart() { Part = "GearSet", FailureTreeTestId = 2 },
+                        new Domain.Models.FailureTreePart() { Part = "GearSet", FailureTreeTestId = 3 }
                         );
                     await _dbcontext.SaveChangesAsync();
                 }
@@ -51,20 +51,20 @@ namespace TicketRepairHub.Infrastructure.Seeders
                 if (!_dbcontext.FailureTreePartFailures.Any())
                 {
                     _dbcontext.FailureTreePartFailures.AddRange(
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Cracked valve", FailureTreePartId = 0 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Small champfer", FailureTreePartId = 1 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Tight main hole", FailureTreePartId = 2 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Porous", FailureTreePartId = 3 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "To big diameter", FailureTreePartId = 4 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Lack of hole", FailureTreePartId = 5 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Too long", FailureTreePartId = 6 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Too small", FailureTreePartId = 7 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Pinch", FailureTreePartId = 8 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Cracked Bolt", FailureTreePartId = 9 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Too long", FailureTreePartId = 10 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Tight GearSet", FailureTreePartId = 11 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Loose GearSet", FailureTreePartId = 12 },
-                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Cracked valve", FailureTreePartId = 13 }
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Cracked valve", FailureTreePartId = 1 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Small champfer", FailureTreePartId = 2 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Tight main hole", FailureTreePartId = 3 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Porous", FailureTreePartId = 4 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "To big diameter", FailureTreePartId = 5 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Lack of hole", FailureTreePartId = 6 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Too long", FailureTreePartId = 7 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Too small", FailureTreePartId = 8 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Pinch", FailureTreePartId = 9 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Cracked Bolt", FailureTreePartId = 10 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Too long", FailureTreePartId = 11 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Tight GearSet", FailureTreePartId = 12 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Loose GearSet", FailureTreePartId = 13 },
+                        new Domain.Models.FailureTreePartFailure() { PartFailureDecscription = "Cracked valve", FailureTreePartId = 14 }
                         );
                     await _dbcontext.SaveChangesAsync();
                 }
