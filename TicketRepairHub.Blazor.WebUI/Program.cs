@@ -13,7 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
-//builder.Services.AddInfrastructure(builder.Configuration);
+// Add db service from Infrastructure layer
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
@@ -28,9 +29,6 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-var connectionString = builder.Configuration.GetConnectionString("RepairingTicketConnectionString") ?? throw new InvalidOperationException("Connection string 'RepairingTicketConnectionString' not found.");
-builder.Services.AddDbContext<RepairTicketDbContext>(options =>
-    options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
