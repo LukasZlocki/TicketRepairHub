@@ -12,7 +12,7 @@ using TicketRepairHub.Infrastructure.Persistance;
 namespace TicketRepairHub.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTicketDbContext))]
-    [Migration("20240526103228_Init")]
+    [Migration("20240526142419_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -33,13 +33,15 @@ namespace TicketRepairHub.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("FailureTreeTestId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Part")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TestId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("FailureTreeTestId");
 
                     b.ToTable("FailureTreeParts");
                 });
@@ -52,13 +54,15 @@ namespace TicketRepairHub.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("FailureTreePartId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PartFailureDecscription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PartId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("FailureTreePartId");
 
                     b.ToTable("FailureTreePartFailures");
                 });
@@ -117,7 +121,7 @@ namespace TicketRepairHub.Infrastructure.Migrations
                     b.Property<double>("MinTestResult5")
                         .HasColumnType("float");
 
-                    b.Property<string>("Part")
+                    b.Property<string>("Product")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -148,10 +152,13 @@ namespace TicketRepairHub.Infrastructure.Migrations
                     b.Property<bool>("IsTestResult5OK")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsTotalResultOK")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Operator")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Part")
+                    b.Property<string>("Product")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Serial")
@@ -177,9 +184,6 @@ namespace TicketRepairHub.Infrastructure.Migrations
 
                     b.Property<double>("TestResult5")
                         .HasColumnType("float");
-
-                    b.Property<bool>("TotalResult1")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -215,20 +219,10 @@ namespace TicketRepairHub.Infrastructure.Migrations
                     b.Property<string>("OperatorComment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TestLimitId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TestResultId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TestLimitId");
-
-                    b.HasIndex("TestResultId");
 
                     b.ToTable("Tickets");
                 });
@@ -252,23 +246,36 @@ namespace TicketRepairHub.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TicketRepairHub.Domain.Models.Ticket", b =>
+            modelBuilder.Entity("TicketRepairHub.Domain.Models.FailureTreePart", b =>
                 {
-                    b.HasOne("TicketRepairHub.Domain.Models.TestLimit", "Limits")
-                        .WithMany()
-                        .HasForeignKey("TestLimitId")
+                    b.HasOne("TicketRepairHub.Domain.Models.FailureTreeTest", "Test")
+                        .WithMany("Parts")
+                        .HasForeignKey("FailureTreeTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketRepairHub.Domain.Models.TestResult", "Result")
-                        .WithMany()
-                        .HasForeignKey("TestResultId")
+                    b.Navigation("Test");
+                });
+
+            modelBuilder.Entity("TicketRepairHub.Domain.Models.FailureTreePartFailure", b =>
+                {
+                    b.HasOne("TicketRepairHub.Domain.Models.FailureTreePart", "Part")
+                        .WithMany("PartFailure")
+                        .HasForeignKey("FailureTreePartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Limits");
+                    b.Navigation("Part");
+                });
 
-                    b.Navigation("Result");
+            modelBuilder.Entity("TicketRepairHub.Domain.Models.FailureTreePart", b =>
+                {
+                    b.Navigation("PartFailure");
+                });
+
+            modelBuilder.Entity("TicketRepairHub.Domain.Models.FailureTreeTest", b =>
+                {
+                    b.Navigation("Parts");
                 });
 #pragma warning restore 612, 618
         }
